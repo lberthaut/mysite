@@ -1,14 +1,34 @@
-<div class="sidebar_container">
-  <mat-drawer
-    #drawer
-    class="example-sidenav"
-    mode="side"
-    [opened]="isOpen$ | async"
-  >
-    <p>Auto-resizing sidenav</p>
-    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+<mat-drawer #drawer class="sidenav" mode="side" [opened]="isOpen$ | async">
+  <div class="sidebar_container">
+    <div class="pic_container">
+      <img class="pic_profile" src="../../../assets/pics/pic_profile.png" />
+    </div>
+    <div class="sidebar_links_container">
+      <ng-container *ngFor="let link of linkName">
+        <div
+          class="link-container"
+          (mouseover)="onMouseOver(link)"
+          (mouseleave)="onMouseLeave()"
+          [@linkContainerHover]="
+            hoveredLinkContainer === link.link ? 'active' : 'inactive'
+          "
+        >
+          <a
+            class="sidebar_links"
+            routerLink="{{ link.link }}"
+            [@linkHover]="hoveredLink === link.link ? 'active' : 'inactive'"
+          >
+            {{ link.value }}
+          </a>
+        </div>
+      </ng-container>
+    </div>
+
+    <p>Lorem ipsum</p>
+  </div>
+
+  <!-- <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
     <button (click)="showFiller = !showFiller" mat-raised-button>
       Toggle extra text
-    </button>
-  </mat-drawer>
-</div>
+    </button> -->
+</mat-drawer>

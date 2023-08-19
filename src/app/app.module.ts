@@ -26,6 +26,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSidenavModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

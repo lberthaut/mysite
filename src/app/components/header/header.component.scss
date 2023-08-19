@@ -4,3 +4,13 @@
     height: 12vh;
     background-color:red;
 }
+
+.pushed {
+    margin-left: 20vw; 
+    transition: margin-left 0.25s ease-out;
+  }
+
+  .returning {
+    margin-left: 0;
+    transition: margin-left 0.25s;
+  }

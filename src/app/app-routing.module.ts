@@ -4,6 +4,10 @@ import { AccueilComponent } from './pages/accueil/accueil.component';
 
 const routes: Routes = [
   { path: '', component: AccueilComponent },
+  { path: 'realisations', component: AccueilComponent },
+  { path: 'scholar', component: AccueilComponent },
+  { path: 'professional', component: AccueilComponent },
+  { path: 'aboutme', component: AccueilComponent },
   // { path: 'settings', component: SettingsPageComponent },
   // {
   //   path: 'faq',

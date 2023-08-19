@@ -8,24 +8,8 @@ body{
 app-root{
     width: 100%;
     min-height: 100vh;
-    max-width: $app-max-width;
     margin: 0 auto;
     padding: 0%;
     display: flex;
     flex-direction: column;
 }
-
-.header_container {
-    display: flex;
-    flex-direction: row; /* Alignement horizontal */
-  }
-  
-  .sidenav_container {
-    flex: 1; /* La sidebar prend autant d'espace que possible */
-  }
-  
-  .header-content {
-    display: flex;
-    align-items: center; /* Centrer verticalement le contenu */
-    padding: 1rem;
-  }

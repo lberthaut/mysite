@@ -6,29 +6,21 @@
     <div class="sidebar_links_container">
       <ng-container *ngFor="let link of linkName">
         <div
-          class="link-container"
+          class="sidebar_link_container"
+          (click)="onLinkClick(link)"
           (mouseover)="onMouseOver(link)"
           (mouseleave)="onMouseLeave()"
           [@linkContainerHover]="
             hoveredLinkContainer === link.link ? 'active' : 'inactive'
           "
         >
-          <a
-            class="sidebar_links"
-            routerLink="{{ link.link }}"
-            [@linkHover]="hoveredLink === link.link ? 'active' : 'inactive'"
-          >
-            {{ link.value }}
-          </a>
+          <p class="sidebar_links">{{ link.value }}</p>
         </div>
       </ng-container>
     </div>
-
-    <p>Lorem ipsum</p>
   </div>
-
-  <!-- <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button> -->
+  <p class="sidebar_copyright">
+    Lorem Ipsum©, <br />
+    None Rights Reserved
+  </p>
 </mat-drawer>

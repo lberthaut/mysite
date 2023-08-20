@@ -5,6 +5,10 @@
     background-color: $dark-color;
   }
 
+  .sidebar_container{
+    overflow-x: hidden;
+  }
+
   .pic_container{
     width: 15vh;
     height: 15vh;
@@ -25,10 +29,33 @@
     flex-wrap: nowrap;
   }
 
+  .sidebar_link_container{
+    padding: 4%;
+    display: inline-block;
+    margin: 0;
+    cursor: pointer;
+
+    &:hover>.sidebar_links {
+      margin-left: 20px;
+    }
+  }
+
   .sidebar_links{
     width: 180%;
     color: white;
     text-decoration: none;
-    padding: 3%;
-    font-size: 1.2vw;
+    font-size: 1.3vw;
+    margin: 0;
+    transition: margin-left 0.25s ease-out;
+  }
+
+  .sidebar_copyright{
+    font-size: 1vw;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+  transform: translate(-50%, 0);
+    text-align: center;
+    width: 100%
   }

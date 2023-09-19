@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { RealisationsComponent } from './pages/realisations/realisations.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     FooterComponent,
     AccueilComponent,
     SidebarComponent,
+    RealisationsComponent,
   ],
   imports: [
     BrowserModule,

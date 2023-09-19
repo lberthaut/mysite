@@ -8,7 +8,15 @@ export class SidebarStateService {
   private _isOpen = new BehaviorSubject<boolean>(false);
   isOpen$: Observable<boolean> = this._isOpen.asObservable();
 
-  toggle() {
-    this._isOpen.next(!this._isOpen.value);
+  toggle(forceState?: boolean) {
+    if (forceState !== undefined) {
+      this._isOpen.next(forceState);
+    } else {
+      this._isOpen.next(!this._isOpen.value);
+    }
+  }
+
+  get isOpenValue() {
+    return this._isOpen.value;
   }
 }

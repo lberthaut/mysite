@@ -12,8 +12,9 @@ export class HeaderComponent {
 
   constructor(private sidebarStateService: SidebarStateService) {}
 
-  toggleSidebar() {
+  toggleSidebar(event: Event) {
     this.sidebarStateService.toggle();
+    event.stopPropagation();
     if (!this.isSidebarOpen) {
       this.isReturning = true;
       setTimeout(() => {

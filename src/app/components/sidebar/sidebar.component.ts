@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener } from '@angular/core';
 import { SidebarStateService } from '../../services/sidebar-state.service';
 import { Router } from '@angular/router';
 import {
@@ -34,7 +34,20 @@ export class SidebarComponent {
     { link: 'aboutme', value: 'A propos de moi' },
   ];
 
+  @HostListener('document:click', ['$event'])
+  clickOutside(event: Event) {
+    if (this.sidebarStateService.isOpenValue) {
+      const clickedInside = this.elementRef.nativeElement.contains(
+        event.target
+      );
+      if (!clickedInside) {
+        this.sidebarStateService.toggle(false);
+      }
+    }
+  }
+
   constructor(
+    private elementRef: ElementRef,
     private sidebarStateService: SidebarStateService,
     private router: Router
   ) {

@@ -1,6 +1,21 @@
 @import '../../../variables.scss';
 
 .header_container{
-    height: 12vh;
-    background-color:red;
+    height: 25vh;
+    background-color: $header-background;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.sidebar_button{
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 4vh 0 0 1vw;
+    &>mat-icon{
+      font-size: 3vw;
+      height: 3vw;
+      width: 3vw;
+    }
 }

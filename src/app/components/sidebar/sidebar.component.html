@@ -1,8 +1,5 @@
 <mat-drawer #drawer class="sidenav" mode="side" [opened]="isOpen$ | async">
   <div class="sidebar_container">
-    <div class="pic_container">
-      <img class="pic_profile" src="assets/pics/pic_profile.png" />
-    </div>
     <div class="sidebar_links_container">
       <ng-container *ngFor="let link of linkName">
         <div

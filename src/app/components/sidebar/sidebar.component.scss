@@ -2,26 +2,13 @@
 
 .sidenav {
     width: 20vw;
-    background-color: $secondary-white;
+    background-color: $sidebar-background;
     border: none;
     box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 2px 5px 9px rgba(94,104,121,0.3);
   }
 
   .sidebar_container{
     overflow-x: hidden;
-  }
-
-  .pic_container{
-    width: 18vh;
-    height: 18vh;
-    overflow: hidden;
-    border-radius: 50%;
-    margin: 0 auto;
-    margin-top: 5vh;
-  }
-
-  .pic_profile{
-    max-width: 100%;
   }
 
   .sidebar_links_container{
@@ -39,7 +26,6 @@
 
     &:hover>.sidebar_links {
       margin-left: 20px;
-      color: white;
     }
   }
 

@@ -1,10 +1,10 @@
 <div class="header_container">
-  <mat-drawer-container class="sidenav_container" autosize>
+  <mat-drawer-container class="sidenav_container">
     <button
       type="button"
       mat-button
       (click)="toggleSidebar($event)"
-      *ngIf="!isSidebarOpen"
+      class="sidebar_button"
     >
       <mat-icon
         aria-hidden="false"
@@ -13,4 +13,5 @@
       ></mat-icon>
     </button>
   </mat-drawer-container>
+  <img src="assets/logos/logo.svg" />
 </div>

@@ -16,7 +16,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./sidebar.component.scss'],
   animations: [
     trigger('linkContainerHover', [
-      state('active', style({ backgroundColor: '#3b3b3b' })),
+      state('active', style({ backgroundColor: '#b3b3b3' })),
       state('inactive', style({ backgroundColor: 'transparent' })),
       transition('inactive <=> active', animate('0.25s ease-out')),
     ]),

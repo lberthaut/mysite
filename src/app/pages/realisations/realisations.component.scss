@@ -1,0 +1,63 @@
+@import '../../../variables.scss';
+
+.cards_container{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 6vh auto;
+}
+
+.card_container {
+    max-width: 25vw;
+    height: 75vh;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    background: #fff;
+    border-radius: 10px;
+    padding: 1vh 3vh;
+    margin: 4vh 0;
+  }
+
+  mat-card-header{
+    margin-bottom: 2vh;
+  }
+
+  .project_subtitle{
+    font-style: italic;
+    font-size: 1.8vh;
+    margin-top: 1vh;
+  }
+
+  .project_pic {
+    height: 20%; 
+    object-fit: contain;
+  }
+
+  .project_technos{
+    font-weight: bold;
+  }
+
+  .project_description{
+    height: 40%; 
+    &>p{
+        text-align: justify;
+        line-height: 3.5vh;
+    }
+  }
+
+  .links_container{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+
+  .links{
+    text-decoration: none;
+  }

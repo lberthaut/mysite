@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SidebarStateService } from '../../services/sidebar-state.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,10 @@ export class HeaderComponent {
   isSidebarOpen = false;
   isReturning = false;
 
-  constructor(private sidebarStateService: SidebarStateService) {}
+  constructor(
+    private sidebarStateService: SidebarStateService,
+    private router: Router
+  ) {}
 
   toggleSidebar(event: Event) {
     this.sidebarStateService.toggle();
@@ -27,5 +31,9 @@ export class HeaderComponent {
     this.sidebarStateService.isOpen$.subscribe((isOpen) => {
       this.isSidebarOpen = isOpen;
     });
+  }
+
+  redirectToIndex() {
+    this.router.navigate(['']);
   }
 }

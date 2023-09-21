@@ -1,10 +1,11 @@
 <div class="header_container">
-  <mat-drawer-container class="sidenav_container">
+  <mat-drawer-container class="sidenav_button_container">
     <button
       type="button"
-      mat-button
       (click)="toggleSidebar($event)"
       class="sidebar_button"
+      matTooltip="Menu"
+      [matTooltipPosition]="'right'"
     >
       <mat-icon
         aria-hidden="false"
@@ -13,5 +14,10 @@
       ></mat-icon>
     </button>
   </mat-drawer-container>
-  <img src="assets/logos/logo.svg" />
+  <img
+    class="logo"
+    src="assets/logos/logo.svg"
+    alt="logo crafted web"
+    (click)="redirectToIndex()"
+  />
 </div>

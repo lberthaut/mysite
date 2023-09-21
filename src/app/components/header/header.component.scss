@@ -8,6 +8,10 @@
     justify-content: space-between;
 }
 
+.sidenav_button_container{
+  background-color: $header-background;
+}
+
 .sidebar_button{
     border: none;
     background-color: transparent;
@@ -18,4 +22,8 @@
       height: 3vw;
       width: 3vw;
     }
+}
+
+.logo{
+  cursor: pointer;
 }

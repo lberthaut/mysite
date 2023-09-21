@@ -37,17 +37,25 @@ interface IProject {
   ],
 })
 export class RealisationsComponent {
-  projectsDatas: IProject[];
+  projectsDatasOc: IProject[];
+  projectsDatasMap: IProject[];
 
   constructor(private http: HttpClient) {
-    this.projectsDatas = [];
+    this.projectsDatasOc = [];
+    this.projectsDatasMap = [];
   }
 
   ngOnInit() {
     this.http
-      .get<IProject[]>('assets/datas/datassites.json')
-      .subscribe((data) => {
-        this.projectsDatas = data;
+      .get<IProject[]>('assets/datas/datassites_oc.json')
+      .subscribe((dataOc) => {
+        this.projectsDatasOc = dataOc.reverse();
+      });
+
+    this.http
+      .get<IProject[]>('assets/datas/datassites_map.json')
+      .subscribe((dataMap) => {
+        this.projectsDatasMap = dataMap;
       });
   }
 }

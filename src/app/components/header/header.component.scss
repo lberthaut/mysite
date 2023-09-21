@@ -6,6 +6,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    &.fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+    }
 }
 
 .sidenav_button_container{
@@ -26,4 +33,20 @@
 
 .logo{
   cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 999px){
+  .sidebar_button>mat-icon{
+    margin-left: 4vw;
+    font-size: 3vh;
+    height: 3vh;
+    width: 3vh;
+  }
+
+  .logo{
+    height: 60%;
+    margin-top: 10%;
+  }
 }

@@ -1,0 +1,35 @@
+@import '../../../variables.scss';
+
+.footer_container{
+    background-color: $header-background;
+    margin: 0;
+    height: 15vh;
+    width: 100vw;
+}
+
+.content_container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 80vw;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.footer_texts{
+    text-align: center;
+    font-size: 1.5vh;
+}
+
+.footer_copyright{
+    background-color: transparent;
+    margin: 0;
+}
+
+.contact{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}

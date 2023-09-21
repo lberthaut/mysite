@@ -28,6 +28,7 @@ export class SidebarComponent {
   hoveredLink: string | null = null;
 
   linkName: { link: string; value: string }[] = [
+    { link: '', value: 'Accueil' },
     { link: 'realisations', value: 'Réalisations' },
     { link: 'professional', value: 'Parcours Professionnel' },
     { link: 'scholar', value: 'Parcours Scolaire' },

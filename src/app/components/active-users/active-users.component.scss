@@ -1,0 +1,16 @@
+@import '../../../variables.scss';
+
+.activeusers_container{
+    background: rgb(0,0,0);
+    background: linear-gradient(168deg, rgba(0,0,0,1) 0%, rgba(81,80,105,1) 0%, rgba(39,38,68,1) 100%, rgba(160,159,173,1) 100%, rgba(225,224,229,1) 100%);
+    color: white;
+    border-radius: 5px;
+    padding: 0.5vh 1.5vh;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.usersnumber{
+    font-weight: bold;
+    color: rgb(219, 0, 0)
+}

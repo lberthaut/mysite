@@ -1,10 +1,12 @@
 @import '../../../variables.scss';
 
 .sidenav {
-    width: 20vw;
+    min-width: 20vw;
+    max-width: 80vw;
     background-color: $sidebar-background;
     border: none;
     box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 2px 5px 9px rgba(94,104,121,0.3);
+    position: fixed;
   }
 
   .sidebar_container{
@@ -12,7 +14,7 @@
   }
 
   .sidebar_links_container{
-    margin-top: 5vh;
+    margin-top: 15vh;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -20,7 +22,6 @@
 
   .sidebar_link_container{
     padding: 4%;
-    display: inline-block;
     margin: 0;
     cursor: pointer;
 
@@ -30,21 +31,22 @@
   }
 
   .sidebar_links{
-    width: 180%;
+    width: 100%;
     color: black;
     text-decoration: none;
-    font-size: 1.3vw;
     margin: 0;
     transition: margin-left 0.25s ease-out;
+    word-wrap: break-word;
   }
 
-  .sidebar_copyright{
-    font-size: 1vw;
-    color: black;
+  .animated_logo{
     position: absolute;
-    bottom: 0;
-    left: 50%;
-  transform: translate(-50%, 0);
-    text-align: center;
-    width: 100%
+    bottom: 0vh;
   }
+
+  @media screen and (max-width: 999px){
+    .animated_logo{
+      bottom: 10vh;
+    }
+  }
+  

@@ -16,6 +16,8 @@ import { RealisationsComponent } from './pages/realisations/realisations.compone
 import { HttpClientModule } from '@angular/common/http';
 import { PaysageComponent } from './components/paysage/paysage.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ActiveUsersComponent } from './components/active-users/active-users.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     SidebarComponent,
     RealisationsComponent,
     PaysageComponent,
+    ActiveUsersComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +41,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatCardModule,
     BrowserAnimationsModule,
     MatTooltipModule,
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

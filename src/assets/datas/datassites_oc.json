@@ -14,7 +14,7 @@
     "name": "Oh My Food !",
     "image": "ohmyfood",
     "title": "De l'art d'animer",
-    "technos": "HTML, CSS, SCSS, responsive",
+    "technos": "SCSS",
     "description": "Loading spinner au chargement. Boutons sont dynamiques au survol, ainsi que les likes. Les restaurants amènent à leurs menus. Animation des plats se fait au chargement de la page, et une autre au survol des plats",
     "link": "https://lberthaut.github.io/Ohmyfood/",
     "repo_link": "https://github.com/lberthaut/Ohmyfood"
@@ -24,7 +24,7 @@
     "name": "Fish eye",
     "image": "fisheye",
     "title": "Photos à gogo !",
-    "technos": "HTML, CSS, JS, responsive",
+    "technos": "JS",
     "description": "Choix des photographes par tag, sur l'accueil. Sur la page d'un photographe, diaporama au clic sur une photo, et controlable au clavier. Incrémentation des likes, ouverture d'une modal via le bouton de contact",
     "link": "https://lberthaut.github.io/Fisheye/",
     "repo_link": "https://github.com/lberthaut/Fisheye"
@@ -34,7 +34,7 @@
     "name": "Les petits plats",
     "image": "lespetitsplats",
     "title": "Que voulez vous manger ?",
-    "technos": "HTML, CSS, JS",
+    "technos": "JS",
     "description": "Recherches asynchrones via la barre de recherche, et via les éléments des dropdowns. 2 branchs ont étés crées pour 2 algorithmes différents. Tests de performances via la console : console.log('motàrechercher', nbre) - nbre correspondant aux nombres d'executions à faire",
     "link": "https://lberthaut.github.io/Lespetitsplats/",
     "repo_link": "https://github.com/lberthaut/Lespetitsplats"
@@ -44,7 +44,7 @@
     "name": "Billed",
     "image": "billed",
     "title": "The cake is a Lie",
-    "technos": "JS, Jest",
+    "technos": "Jest",
     "description": "Recherche et résolutions de bugs sur un code legacy. Ajouts de tests d'intégrations Jest et test End To End (respectivement 'src/__tests__' et 'test E2E/')",
     "link": "",
     "repo_link": "https://github.com/lberthaut/Billed"
@@ -64,7 +64,7 @@
     "name": "Kasa",
     "image": "kasa",
     "title": "Everywhere, at Home",
-    "technos": "HTML, CSS, JS, React, responsive",
+    "technos": "React",
     "description": "Décomposition des pages en différents composants React. Pages des appartements avec diaporama et dropdowns",
     "link": "https://lberthaut.github.io/projetkasa/",
     "repo_link": "https://github.com/lberthaut/projetkasa"
@@ -74,7 +74,7 @@
     "name": "ArgentBank",
     "image": "argentbank",
     "title": "On s'occupe de tout",
-    "technos": "HTML, CSS, JS, , react, Redux, responsive",
+    "technos": "React, Redux",
     "description": "Authentification par token, requêtes GET des informations, modifications des informations par requête POST. Stockage dans le store Redux. Le serveur Mongo n'étant plus accessible, vous ne pourrez tester les fonctionnalités, j'ai laissé le code dans le repository ('src/services/fetch')",
     "link": "https://lberthaut.github.io/argentbank/",
     "repo_link": "https://github.com/lberthaut/argentbank"
@@ -84,7 +84,7 @@
     "name": "Wealth Health",
     "image": "hrnet",
     "title": "Logiciel interne RH",
-    "technos": "HTML, CSS, JS, React",
+    "technos": "React",
     "description": "Migration d'un site Jquery en React. Stockage des informations du formulaire dans le state, puis affichage du state dans un autre composant ('Employees List'). Rapports de performances Lighthouse entre la version legacy et la version React",
     "link": "https://lberthaut.github.io/hrnetreact",
     "repo_link": "https://github.com/lberthaut/hrnetreact"

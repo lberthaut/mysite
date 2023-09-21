@@ -1,8 +1,5 @@
 <mat-drawer #drawer class="sidenav" mode="side" [opened]="isOpen$ | async">
   <div class="sidebar_container">
-    <div class="pic_container">
-      <img class="pic_profile" src="assets/pics/pic_profile.png" />
-    </div>
     <div class="sidebar_links_container">
       <ng-container *ngFor="let link of linkName">
         <div
@@ -19,8 +16,9 @@
       </ng-container>
     </div>
   </div>
-  <p class="sidebar_copyright">
-    Lorem Ipsum©, <br />
-    None Rights Reserved
-  </p>
+  <img
+    alt="logo animé"
+    src="assets/logos/animated_logo.svg"
+    class="animated_logo"
+  />
 </mat-drawer>

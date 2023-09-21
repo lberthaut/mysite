@@ -16,7 +16,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./sidebar.component.scss'],
   animations: [
     trigger('linkContainerHover', [
-      state('active', style({ backgroundColor: '#b3b3b3' })),
+      state('active', style({ backgroundColor: '#D2E9E9' })),
       state('inactive', style({ backgroundColor: 'transparent' })),
       transition('inactive <=> active', animate('0.25s ease-out')),
     ]),
@@ -28,6 +28,7 @@ export class SidebarComponent {
   hoveredLink: string | null = null;
 
   linkName: { link: string; value: string }[] = [
+    { link: '', value: 'Accueil' },
     { link: 'realisations', value: 'Réalisations' },
     { link: 'professional', value: 'Parcours Professionnel' },
     { link: 'scholar', value: 'Parcours Scolaire' },

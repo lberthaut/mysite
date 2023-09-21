@@ -1,0 +1,87 @@
+@import '../../../variables.scss';
+
+.realisations_title{
+  margin-left: 21%;
+  margin-top: 5%;
+}
+
+.cards_container{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin-left: 20%;
+}
+
+.card_container{
+  border-radius: 0;
+  border-left: 4px solid $header-background;
+  padding-left: 2vw;
+  padding-bottom: 2vh;
+}
+
+.card_container:nth-child(even) {
+  background-color: transparent;
+}
+
+.card_container:nth-child(odd) {
+  background-color: $sidebar-background;
+}
+
+.mat-mdc-card{
+  box-shadow: none;
+}
+
+.project_title::before{
+  content: '';
+       display: inline-block;
+       width: 15px;
+       height: 15px;
+       -moz-border-radius: 7.5px;
+       -webkit-border-radius: 7.5px;
+       border-radius: 7.5px;
+       background-color: $header-background;
+       position: absolute;
+       top: 3.2vh;
+       left: -1.18vh;
+}
+
+.project_subtitle{
+  margin-left: 3vw;
+  margin-top: 1vh;
+}
+
+  .project_technos{
+    font-weight: bold;
+    margin-left: 3vw;
+    &>p{
+      margin-top: 1vh;
+    }
+  }
+
+  .project_description{
+    margin-left: 3vw;
+    line-height: 3.5vh;
+    width: 80%;
+  }
+  
+  .links_container{
+    width: 15%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-top: 3vh;
+    margin-left: 3.5vw;
+  }
+
+  .links{
+    text-decoration: none;
+  }
+
+  @media screen and (max-width: 999px){
+    .cards_container{
+      width: 95%;
+      margin-left: 5%;
+  }
+  }

@@ -1,6 +1,52 @@
 @import '../../../variables.scss';
 
 .header_container{
-    height: 12vh;
-    background-color:red;
+    height: 25vh;
+    background-color: $header-background;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    &.fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+    }
+}
+
+.sidenav_button_container{
+  background-color: $header-background;
+}
+
+.sidebar_button{
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 4vh 0 0 1vw;
+    &>mat-icon{
+      font-size: 3vw;
+      height: 3vw;
+      width: 3vw;
+    }
+}
+
+.logo{
+  cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 999px){
+  .sidebar_button>mat-icon{
+    margin-left: 4vw;
+    font-size: 3vh;
+    height: 3vh;
+    width: 3vh;
+  }
+
+  .logo{
+    height: 60%;
+    margin-top: 10%;
+  }
 }

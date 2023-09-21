@@ -1,4 +1,5 @@
 @import './variables.scss';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 body{
     margin: 0;
@@ -12,4 +13,5 @@ app-root{
     padding: 0%;
     display: flex;
     flex-direction: column;
+    background-color: $body-background;
 }

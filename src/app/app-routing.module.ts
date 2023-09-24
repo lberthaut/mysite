@@ -2,13 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccueilComponent } from './pages/accueil/accueil.component';
 import { RealisationsComponent } from './pages/realisations/realisations.component';
+import { AboutmeComponent } from './pages/aboutme/aboutme.component';
 
 const routes: Routes = [
   { path: '', component: AccueilComponent },
   { path: 'realisations', component: RealisationsComponent },
   { path: 'scholar', component: AccueilComponent },
   { path: 'professional', component: AccueilComponent },
-  { path: 'aboutme', component: AccueilComponent },
+  { path: 'aboutme', component: AboutmeComponent },
   // { path: 'settings', component: SettingsPageComponent },
   // {
   //   path: 'faq',

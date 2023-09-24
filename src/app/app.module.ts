@@ -18,6 +18,7 @@ import { PaysageComponent } from './components/paysage/paysage.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ActiveUsersComponent } from './components/active-users/active-users.component';
 import { CommonModule } from '@angular/common';
+import { AboutmeComponent } from './pages/aboutme/aboutme.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { CommonModule } from '@angular/common';
     RealisationsComponent,
     PaysageComponent,
     ActiveUsersComponent,
+    AboutmeComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +44,7 @@ import { CommonModule } from '@angular/common';
     BrowserAnimationsModule,
     MatTooltipModule,
     CommonModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

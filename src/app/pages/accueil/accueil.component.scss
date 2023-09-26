@@ -115,6 +115,7 @@
 
 .cv_button{
     margin: 6vh 0 4vh 20vh;
+    cursor: pointer;
 }
 
 .aboutme_text_container{
@@ -127,6 +128,7 @@
     padding-left: 20vh;
     background: $sidebar-background;
     padding: 2vh 0 2vh 20vh;
+    margin-top: 4vh;
 }
 
 .aboutme_text{
@@ -171,4 +173,9 @@
 .aboutme_infos{
     margin: 0;
     line-height: 4vh;
+}
+
+.contracts_container{
+  margin-left: 10vw;
+  margin-top: 6vh;
 }

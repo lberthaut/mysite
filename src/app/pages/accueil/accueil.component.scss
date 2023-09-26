@@ -182,12 +182,11 @@
 
 .contracts_box{
   width: 50%;
-  margin-top: 6vh;
+  height: 40vh;
 }
 
-::ng-deep .mat-step-header .mat-step-icon-selected {
-  background-color: $sidebar-secondary-color ; 
-  color: black;
+.contract_container{
+  margin-top: 6vh;
 }
 
 .contract_container{
@@ -200,12 +199,12 @@
 }
 
 .contract_container>img{
-  height: 140%;
+  height: 100%;
 }
 
 .pic_container{
-  height: 13vw;
-  width: 13vw;
+  height: 10vw;
+  width: 10vw;
   overflow: hidden;
   border-radius: 50%;
   margin-left: 15%;
@@ -219,4 +218,3 @@
 .contract_text{
   margin-right: 5vw;
 }
-

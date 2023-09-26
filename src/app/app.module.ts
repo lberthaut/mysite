@@ -24,6 +24,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { PrefooterComponent } from './components/prefooter/prefooter.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { PrefooterComponent } from './components/prefooter/prefooter.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatProgressBarModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

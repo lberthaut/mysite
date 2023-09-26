@@ -52,7 +52,7 @@ export class RealisationsComponent {
       this.http.get<IProject[]>('assets/datas/datassites_map.json').toPromise(),
     ]).then(([dataOc, dataMap]) => {
       this.projectsDatasOc = dataOc?.reverse();
-      this.projectsDatasMap = dataMap;
+      this.projectsDatasMap = dataMap?.reverse();
       this.dataLoaded = true;
     });
   }

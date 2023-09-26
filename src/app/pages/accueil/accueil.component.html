@@ -72,26 +72,26 @@
       Ouvert à divers contrats pour répondre à vos besoins
     </h2>
     <div class="contracts_box">
-      <mat-stepper [linear]="isLinear" #stepper>
-        <mat-step [stepControl]="firstFormGroup" label="CDI /CDD">
+      <mat-tab-group [color]="'accent'">
+        <mat-tab label="CDI">
           <div class="contract_container">
             <div class="pic_container">
               <img class="pic_profile" src="assets/pics/pic_profile.png" />
             </div>
             <p class="contract_text">Louis Berthaut</p>
           </div>
-        </mat-step>
-        <mat-step [stepControl]="secondFormGroup" label="Free-lance">
-          <div class="contract_container">
+        </mat-tab>
+        <mat-tab label="Freelance"
+          ><div class="contract_container">
             <img
               class="logo"
               src="assets/logos/logo.svg"
               alt="logo crafted web"
             />
             <p class="contract_text">Crafted Web</p>
-          </div>
-        </mat-step>
-      </mat-stepper>
+          </div></mat-tab
+        >
+      </mat-tab-group>
     </div>
   </div>
 </div>

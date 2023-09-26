@@ -6,6 +6,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-accueil',
@@ -22,6 +23,16 @@ export class AccueilComponent implements OnInit {
   showTitle1 = false;
   showTitle2 = false;
   showTitle3 = false;
+
+  firstFormGroup = this._formBuilder.group({
+    firstCtrl: ['', Validators.required],
+  });
+  secondFormGroup = this._formBuilder.group({
+    secondCtrl: ['', Validators.required],
+  });
+  isLinear = false;
+
+  constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
     setTimeout(() => (this.showTitle1 = true), 1000);

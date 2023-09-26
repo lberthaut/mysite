@@ -1,0 +1,13 @@
+@import '../../../variables.scss';
+
+.prefooter_container{
+    height: 30vh;
+    padding-left: 10vw;
+    margin-top: 6vh;
+    background-color: $sidebar-background;
+  }
+  
+  .animated_logo{
+  height: 100%;
+  cursor: pointer;
+  }

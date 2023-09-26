@@ -72,5 +72,6 @@ export class SidebarComponent {
   onLinkClick(link: { link: string; value: string }) {
     this.sidebarStateService.toggle();
     this.router.navigate([link.link]);
+    window.scrollTo(0, 0);
   }
 }

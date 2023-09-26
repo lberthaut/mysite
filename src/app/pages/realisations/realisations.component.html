@@ -1,4 +1,10 @@
-<div class="realisations_container" @slideFromRight>
+<mat-progress-bar
+  mode="indeterminate"
+  *ngIf="!dataLoaded"
+  [color]="'accent'"
+></mat-progress-bar>
+<div class="loading_container" *ngIf="!dataLoaded"></div>
+<div class="realisations_container" @slideFromRight *ngIf="dataLoaded">
   <div class="realisations_map">
     <h2 class="realisations_title">Réalisations Entreprise</h2>
     <div class="cards_container">

@@ -38,10 +38,18 @@ export class ActiveUsersComponent implements OnInit, OnDestroy {
   increasePublic(): void {
     let randomnumber = Math.floor(Math.random() * 9000);
     this.publicUser += randomnumber;
+
+    if (this.publicUser <= 0) {
+      this.publicUser = 4257868;
+    }
   }
 
   decreasePublic(): void {
     let randomnumber = Math.floor(Math.random() * 9000);
     this.publicUser -= randomnumber;
+
+    if (this.publicUser <= 0) {
+      this.publicUser = 854762;
+    }
   }
 }

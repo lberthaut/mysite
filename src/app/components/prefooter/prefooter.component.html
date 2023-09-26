@@ -5,6 +5,51 @@
       src="assets/logos/animated_logo.svg"
       alt="logo crafted web"
   /></a>
-  <div class="navigation_container"></div>
-  <div class="contact_container"></div>
+  <div class="navigation_container">
+    <p class="prefooter_title">Navigation</p>
+    <div class="prefooter_links_container">
+      <ng-container *ngFor="let link of linkName">
+        <div class="prefooter_link_container" (click)="onLinkClick(link)">
+          <p class="prefooter_link">> {{ link.value }}</p>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="contact_container">
+    <p class="prefooter_title">Contacts</p>
+    <div class="prefooter_contacts_container">
+      <ng-container *ngFor="let contact of contactName">
+        <div class="prefooter_contact_container">
+          <img
+            alt="{{ contact.icon }}"
+            src="assets/icons/{{ contact.icon }}.svg"
+            class="contact_icon"
+          />
+          <p
+            *ngIf="
+              !contact.value.startsWith('http') && !contact.value.includes('@')
+            "
+            class="prefooter_contact"
+          >
+            {{ contact.value }}
+          </p>
+          <a
+            *ngIf="contact.value.startsWith('http')"
+            class="prefooter_contact prefooter_link"
+            href="{{ contact.value }}"
+            target="_blank"
+          >
+            Linkedin
+          </a>
+          <a
+            *ngIf="contact.value.includes('@')"
+            class="prefooter_contact prefooter_link"
+            href="mailto:{{ contact.value }}"
+          >
+            {{ contact.value }}
+          </a>
+        </div>
+      </ng-container>
+    </div>
+  </div>
 </div>

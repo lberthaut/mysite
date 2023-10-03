@@ -17,13 +17,15 @@
 
 .sidenav_button_container{
   background-color: $header-background;
+  position:fixed;
+  height: 100vh;
 }
 
 .sidebar_button{
     border: none;
     background-color: transparent;
     padding: 0;
-    margin: 4vh 0 0 1vw;
+    margin: 4vh 0.5vw 0 0.5vw;
     &>mat-icon{
       font-size: 3vw;
       height: 3vw;
@@ -33,6 +35,7 @@
 
 .logo{
   cursor: pointer;
+  margin-left: 80%;
 }
 
 

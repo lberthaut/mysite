@@ -1,1 +1,113 @@
-<p>Prout!</p>
+<div class="index_container">
+  <div class="index_text_title_container">
+    <p
+      class="index_text_title_01"
+      [@slideFromRight]="showTitle1 ? 'in' : 'void'"
+    >
+      En pleine expansion digitale ?
+    </p>
+    <p
+      class="index_text_title_02"
+      [@slideFromRight]="showTitle2 ? 'in' : 'void'"
+    >
+      Je suis Louis BERTHAUT
+    </p>
+    <p
+      class="index_text_title_03"
+      [@slideFromRight]="showTitle3 ? 'in' : 'void'"
+    >
+      Développeur Web
+    </p>
+  </div>
+  <a href="assets/medias/CV_LB.pdf" target="_blank" class="cv_link">
+    <button class="button cv_button" role="button">Voir mon CV</button>
+  </a>
+
+  <div class="aboutme_text_container">
+    <p class="aboutme_text">
+      Je suis développeur <span class="strong_text"> front-end agile</span> et
+      doté de compétences complémentaires en back-end, bases de données et
+      gestion de serveurs. Je me concentre sur la création d'applications
+      métiers <span class="strong_text">robustes</span> et
+      <span class="strong_text">évolutives</span>, tout en tenant compte des
+      enjeux actuels de <span class="strong_text">digitalisation</span> et de
+      <span class="strong_text">productivité</span>. <br /><br />Ce qui me
+      distingue, c'est mon approche centrée sur l'humain. Je crois fermement que
+      la technologie doit servir les personnes, et non l'inverse. C'est pourquoi
+      je m'efforce de créer des solutions qui non seulement résolvent des
+      problèmes techniques, mais qui ont également un
+      <span class="strong_text">impact positif sur les utilisateurs</span> et
+      les équipes avec lesquelles je travaille.
+    </p>
+    <div class="aboutme_icons_text_part">
+      <div class="aboutme_infos_icons_container">
+        <img
+          alt="icone localisation"
+          src="../../../assets/icons/location.svg"
+          class="icon_index little_padding"
+        />
+        <p class="aboutme_infos">Basé à Marseille</p>
+      </div>
+      <div class="aboutme_infos_icons_container">
+        <img
+          alt="icone computer"
+          src="../../../assets/icons/computer.svg"
+          class="icon_index"
+        />
+        <p class="aboutme_infos">Travail à distance ou sur site</p>
+      </div>
+      <div class="aboutme_infos_icons_container">
+        <img
+          alt="icone computer"
+          src="../../../assets/icons/team.svg"
+          class="icon_index"
+        />
+        <p class="aboutme_infos">Solo ou équipe</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards_index_container">
+    <h2 class="index_title">
+      Ouvert à divers contrats pour répondre à vos besoins
+    </h2>
+    <div class="cards_container">
+      <mat-card class="card" id="card1">
+        <mat-card-header>
+          <div mat-card-avatar class="pic_container">
+            <img
+              class="pic_profile"
+              src="../../../assets/pics/pic_profile.png"
+            />
+          </div>
+          <mat-card-title class="card_title">
+            <p>Louis</p>
+          </mat-card-title>
+          <mat-card-subtitle class="card_subtitle">
+            <p>Ouvert pour CDI</p>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="project_description"> </mat-card-content>
+      </mat-card>
+
+      <mat-card class="card" id="card2">
+        <mat-card-header>
+          <div mat-card-avatar>
+            <img
+              class="logo_card"
+              src="assets/logos/logo.svg"
+              alt="logo crafted web"
+            />
+          </div>
+          <mat-card-title class="card_title">
+            <p>Crafted Web</p>
+          </mat-card-title>
+          <mat-card-subtitle class="card_subtitle">
+            <p>Ouvert pour contrat Freelance</p>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="card_description"> </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

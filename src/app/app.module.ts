@@ -18,6 +18,13 @@ import { PaysageComponent } from './components/paysage/paysage.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ActiveUsersComponent } from './components/active-users/active-users.component';
 import { CommonModule } from '@angular/common';
+import { AboutmeComponent } from './pages/aboutme/aboutme.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { PrefooterComponent } from './components/prefooter/prefooter.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -29,6 +36,8 @@ import { CommonModule } from '@angular/common';
     RealisationsComponent,
     PaysageComponent,
     ActiveUsersComponent,
+    AboutmeComponent,
+    PrefooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +51,13 @@ import { CommonModule } from '@angular/common';
     BrowserAnimationsModule,
     MatTooltipModule,
     CommonModule,
+    MatIconModule,
+    MatStepperModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatProgressBarModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

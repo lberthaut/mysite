@@ -16,7 +16,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./sidebar.component.scss'],
   animations: [
     trigger('linkContainerHover', [
-      state('active', style({ backgroundColor: '#D2E9E9' })),
+      state('active', style({ backgroundColor: '#EEE0C9' })),
       state('inactive', style({ backgroundColor: 'transparent' })),
       transition('inactive <=> active', animate('0.25s ease-out')),
     ]),
@@ -72,5 +72,6 @@ export class SidebarComponent {
   onLinkClick(link: { link: string; value: string }) {
     this.sidebarStateService.toggle();
     this.router.navigate([link.link]);
+    window.scrollTo(0, 0);
   }
 }

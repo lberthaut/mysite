@@ -1,6 +1,17 @@
-<div class="realisations_container" @slideFromRight>
+<mat-progress-bar
+  mode="indeterminate"
+  *ngIf="!dataLoaded"
+  [color]="'accent'"
+></mat-progress-bar>
+<div class="loading_container" *ngIf="!dataLoaded"></div>
+<div class="realisations_container" @slideFromRight *ngIf="dataLoaded">
   <div class="realisations_map">
-    <h2 class="realisations_title">Réalisations Entreprise</h2>
+    <div class="title_container">
+      <h2 class="realisations_title glitch">Réalisations Entreprise</h2>
+      <h2 class="realisations_title glitch">Réalisations Entreprise</h2>
+      <h2 class="realisations_title glitch">Réalisations Entreprise</h2>
+    </div>
+
     <div class="cards_container">
       <mat-card class="card_container" *ngFor="let project of projectsDatasMap">
         <mat-card-header>
@@ -36,34 +47,45 @@
   </div>
 
   <div class="realisations_oc">
-    <h2 class="realisations_title">Réalisations OpenClassorooms</h2>
-    <div class="cards_container" @slideFromRight>
-      <mat-card class="card_container" *ngFor="let project of projectsDatasOc">
-        <mat-card-header>
-          <mat-card-title class="project_title">{{
-            project.name
-          }}</mat-card-title>
-          <mat-card-subtitle class="project_subtitle">{{
-            project.title
-          }}</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content class="project_technos">
-          <p>
-            {{ project.technos }}
-          </p>
-        </mat-card-content>
-        <mat-card-content class="project_description">
-          <p>
-            {{ project.description }}
-          </p>
-        </mat-card-content>
-        <mat-card-actions class="links_container">
-          <a class="links" mat-raised-button href="{{ project.link }}">Site</a>
-          <a class="links" mat-raised-button href="{{ project.repo_link }}"
-            >Repo</a
-          >
-        </mat-card-actions>
-      </mat-card>
+    <div class="realisations_map">
+      <div class="title_container">
+        <h2 class="realisations_title glitch">Réalisations OpenClassorooms</h2>
+        <h2 class="realisations_title glitch">Réalisations OpenClassorooms</h2>
+        <h2 class="realisations_title glitch">Réalisations OpenClassorooms</h2>
+      </div>
+      <div class="cards_container">
+        <mat-card
+          class="card_container"
+          *ngFor="let project of projectsDatasOc"
+        >
+          <mat-card-header>
+            <mat-card-title class="project_title">{{
+              project.name
+            }}</mat-card-title>
+            <mat-card-subtitle class="project_subtitle">{{
+              project.title
+            }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="project_technos">
+            <p>
+              {{ project.technos }}
+            </p>
+          </mat-card-content>
+          <mat-card-content class="project_description">
+            <p>
+              {{ project.description }}
+            </p>
+          </mat-card-content>
+          <mat-card-actions class="links_container">
+            <a class="links" mat-raised-button href="{{ project.link }}"
+              >Site</a
+            >
+            <a class="links" mat-raised-button href="{{ project.repo_link }}"
+              >Repo</a
+            >
+          </mat-card-actions>
+        </mat-card>
+      </div>
     </div>
   </div>
 </div>

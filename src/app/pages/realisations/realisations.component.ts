@@ -37,8 +37,9 @@ interface IProject {
   ],
 })
 export class RealisationsComponent {
-  projectsDatasOc: IProject[];
-  projectsDatasMap: IProject[];
+  projectsDatasOc: IProject[] | undefined;
+  projectsDatasMap: IProject[] | undefined;
+  dataLoaded: boolean = false;
 
   constructor(private http: HttpClient) {
     this.projectsDatasOc = [];
@@ -46,16 +47,13 @@ export class RealisationsComponent {
   }
 
   ngOnInit() {
-    this.http
-      .get<IProject[]>('assets/datas/datassites_oc.json')
-      .subscribe((dataOc) => {
-        this.projectsDatasOc = dataOc.reverse();
-      });
-
-    this.http
-      .get<IProject[]>('assets/datas/datassites_map.json')
-      .subscribe((dataMap) => {
-        this.projectsDatasMap = dataMap;
-      });
+    Promise.all([
+      this.http.get<IProject[]>('assets/datas/datassites_oc.json').toPromise(),
+      this.http.get<IProject[]>('assets/datas/datassites_map.json').toPromise(),
+    ]).then(([dataOc, dataMap]) => {
+      this.projectsDatasOc = dataOc?.reverse();
+      this.projectsDatasMap = dataMap?.reverse();
+      this.dataLoaded = true;
+    });
   }
 }

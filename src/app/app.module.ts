@@ -25,6 +25,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { PrefooterComponent } from './components/prefooter/prefooter.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { ProfessionalComponent } from './pages/professional/professional.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     ActiveUsersComponent,
     AboutmeComponent,
     PrefooterComponent,
+    ProfessionalComponent,
   ],
   imports: [
     BrowserModule,

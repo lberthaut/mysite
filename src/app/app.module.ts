@@ -26,6 +26,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { PrefooterComponent } from './components/prefooter/prefooter.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ProfessionalComponent } from './pages/professional/professional.component';
+import { ScholarComponent } from './pages/scholar/scholar.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ProfessionalComponent } from './pages/professional/professional.compone
     AboutmeComponent,
     PrefooterComponent,
     ProfessionalComponent,
+    ScholarComponent,
   ],
   imports: [
     BrowserModule,

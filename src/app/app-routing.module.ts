@@ -3,12 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccueilComponent } from './pages/accueil/accueil.component';
 import { RealisationsComponent } from './pages/realisations/realisations.component';
 import { AboutmeComponent } from './pages/aboutme/aboutme.component';
+import { ProfessionalComponent } from './pages/professional/professional.component';
+import { ScholarComponent } from './pages/scholar/scholar.component';
 
 const routes: Routes = [
   { path: '', component: AccueilComponent },
   { path: 'realisations', component: RealisationsComponent },
-  { path: 'scholar', component: AccueilComponent },
-  { path: 'professional', component: AccueilComponent },
+  { path: 'scholar', component: ScholarComponent },
+  { path: 'professional', component: ProfessionalComponent },
   { path: 'aboutme', component: AboutmeComponent },
   // { path: 'settings', component: SettingsPageComponent },
   // {

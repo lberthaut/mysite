@@ -67,31 +67,47 @@
     </div>
   </div>
 
-  <div class="contracts_container">
+  <div class="cards_index_container">
     <h2 class="index_title">
       Ouvert à divers contrats pour répondre à vos besoins
     </h2>
-    <div class="contracts_box">
-      <mat-tab-group [color]="'accent'">
-        <mat-tab label="CDI">
-          <div class="contract_container">
-            <div class="pic_container">
-              <img class="pic_profile" src="assets/pics/pic_profile.png" />
-            </div>
-            <p class="contract_text">Louis Berthaut</p>
-          </div>
-        </mat-tab>
-        <mat-tab label="Freelance"
-          ><div class="contract_container">
+    <div class="cards_container">
+      <mat-card class="card" id="card1">
+        <mat-card-header>
+          <div mat-card-avatar class="pic_container">
             <img
-              class="logo"
+              class="pic_profile"
+              src="../../../assets/pics/pic_profile.png"
+            />
+          </div>
+          <mat-card-title class="card_title">
+            <p>Louis</p>
+          </mat-card-title>
+          <mat-card-subtitle class="card_subtitle">
+            <p>Ouvert pour CDI</p>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="project_description"> </mat-card-content>
+      </mat-card>
+
+      <mat-card class="card" id="card2">
+        <mat-card-header>
+          <div mat-card-avatar>
+            <img
+              class="logo_card"
               src="assets/logos/logo.svg"
               alt="logo crafted web"
             />
-            <p class="contract_text">Crafted Web</p>
-          </div></mat-tab
-        >
-      </mat-tab-group>
+          </div>
+          <mat-card-title class="card_title">
+            <p>Crafted Web</p>
+          </mat-card-title>
+          <mat-card-subtitle class="card_subtitle">
+            <p>Ouvert pour contrat Freelance</p>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="card_description"> </mat-card-content>
+      </mat-card>
     </div>
   </div>
 </div>

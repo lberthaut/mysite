@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Renderer2,
+  ElementRef,
+  AfterViewInit,
+} from '@angular/core';
 import {
   trigger,
   state,
@@ -19,7 +25,7 @@ import { FormBuilder, Validators } from '@angular/forms';
     ]),
   ],
 })
-export class AccueilComponent implements OnInit {
+export class AccueilComponent implements OnInit, AfterViewInit {
   showTitle1 = false;
   showTitle2 = false;
   showTitle3 = false;
@@ -32,11 +38,34 @@ export class AccueilComponent implements OnInit {
   });
   isLinear = false;
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(
+    private _formBuilder: FormBuilder,
+    private renderer: Renderer2,
+    private el: ElementRef
+  ) {}
 
   ngOnInit() {
     setTimeout(() => (this.showTitle1 = true), 1000);
     setTimeout(() => (this.showTitle2 = true), 2000);
     setTimeout(() => (this.showTitle3 = true), 2500);
+  }
+
+  ngAfterViewInit() {
+    window.addEventListener('scroll', () => {
+      const card1 = this.el.nativeElement.querySelector('#card1');
+      const card2 = this.el.nativeElement.querySelector('#card2');
+      const card1Pos = card1.getBoundingClientRect().top;
+      const card2Pos = card2.getBoundingClientRect().top;
+      const windowPos = window.innerHeight;
+      console.log(windowPos);
+
+      if (card1Pos * 1.5 < windowPos && card2Pos * 1.5 < windowPos) {
+        this.renderer.addClass(card1, 'show');
+        this.renderer.addClass(card2, 'show');
+      } else {
+        this.renderer.removeClass(card1, 'show');
+        this.renderer.removeClass(card2, 'show');
+      }
+    });
   }
 }

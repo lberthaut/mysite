@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ScholarComponent } from './scholar.component';
+import { PokeComponent } from './poke.component';
 
-describe('ScholarComponent', () => {
-  let component: ScholarComponent;
-  let fixture: ComponentFixture<ScholarComponent>;
+describe('PokeComponent', () => {
+  let component: PokeComponent;
+  let fixture: ComponentFixture<PokeComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ScholarComponent]
+      declarations: [PokeComponent]
     });
-    fixture = TestBed.createComponent(ScholarComponent);
+    fixture = TestBed.createComponent(PokeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

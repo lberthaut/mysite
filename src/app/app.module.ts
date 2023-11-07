@@ -25,8 +25,9 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { PrefooterComponent } from './components/prefooter/prefooter.component';
 import { MatTabsModule } from '@angular/material/tabs';
-import { ProfessionalComponent } from './pages/professional/professional.component';
-import { ScholarComponent } from './pages/scholar/scholar.component';
+import { PokeComponent } from './components/poke/poke.component';
+import { PokepageComponent } from './pages/pokepage/pokepage.component';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -40,8 +41,8 @@ import { ScholarComponent } from './pages/scholar/scholar.component';
     ActiveUsersComponent,
     AboutmeComponent,
     PrefooterComponent,
-    ProfessionalComponent,
-    ScholarComponent,
+    PokeComponent,
+    PokepageComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +63,7 @@ import { ScholarComponent } from './pages/scholar/scholar.component';
     MatFormFieldModule,
     MatProgressBarModule,
     MatTabsModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

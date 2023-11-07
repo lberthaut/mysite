@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../services/datas.service';
 import {
   trigger,
   state,
@@ -36,24 +36,44 @@ interface IProject {
     ]),
   ],
 })
-export class RealisationsComponent {
+export class RealisationsComponent implements OnInit {
   projectsDatasOc: IProject[] | undefined;
   projectsDatasMap: IProject[] | undefined;
   dataLoaded: boolean = false;
 
-  constructor(private http: HttpClient) {
+  constructor(private dataService: DataService) {
     this.projectsDatasOc = [];
     this.projectsDatasMap = [];
   }
 
   ngOnInit() {
-    Promise.all([
-      this.http.get<IProject[]>('assets/datas/datassites_oc.json').toPromise(),
-      this.http.get<IProject[]>('assets/datas/datassites_map.json').toPromise(),
-    ]).then(([dataOc, dataMap]) => {
-      this.projectsDatasOc = dataOc?.reverse();
-      this.projectsDatasMap = dataMap?.reverse();
-      this.dataLoaded = true;
+    this.dataService.getDatas('oc_datas').subscribe({
+      next: (data) => {
+        this.projectsDatasOc = data?.reverse();
+        this.checkDataLoaded();
+      },
+      error: (error) => {
+        console.error('Erreur lors de la récupération de datassites_oc', error);
+      },
     });
+
+    this.dataService.getDatas('map_datas').subscribe({
+      next: (data) => {
+        this.projectsDatasMap = data?.reverse();
+        this.checkDataLoaded();
+      },
+      error: (error) => {
+        console.error(
+          'Erreur lors de la récupération de datassites_map',
+          error
+        );
+      },
+    });
+  }
+
+  private checkDataLoaded() {
+    if (this.projectsDatasOc && this.projectsDatasMap) {
+      this.dataLoaded = true;
+    }
   }
 }

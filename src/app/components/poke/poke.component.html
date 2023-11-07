@@ -1,0 +1,42 @@
+<mat-progress-bar
+  mode="indeterminate"
+  *ngIf="!dataLoaded"
+  [color]="'accent'"
+></mat-progress-bar>
+<div class="poke_container">
+  <div class="generations">
+    <mat-card
+      *ngFor="let gen of genArray; let i = index"
+      class="generation"
+      (click)="selectGen(i)"
+      [ngClass]="{ 'generation-clicked': selectedGen === i }"
+    >
+      <img src="assets/icons/pokeball.svg" class="pokeball_icon" />
+      <div matListItemTitle>Pokémons de {{ gen }}e génération</div>
+    </mat-card>
+  </div>
+  <div class="contents_container">
+    <div class="types" *ngIf="selectedGen != null && pokemonsDatas">
+      <img
+        class="type"
+        [ngClass]="{ grayscale: type.name.fr === selectedType }"
+        src="{{ type.sprites }}"
+        *ngFor="let type of datasTypes"
+        (click)="selectType(type.name.fr)"
+        alt="{{ type.name.fr }} pic"
+        matTooltip="{{ type.name.fr }}"
+      />
+    </div>
+    <div class="cards" *ngIf="pokemonsDatas">
+      <mat-card *ngFor="let pokemon of pokemonsDatas" class="pokemon_card">
+        <p class="pokemon_id">{{ pokemon.id }}</p>
+        <img
+          [src]="pokemon.sprite.front_default"
+          alt="{{ pokemon.name }}"
+          class="pokemon_pic"
+        />
+        <p>{{ pokemon.name }}</p>
+      </mat-card>
+    </div>
+  </div>
+</div>

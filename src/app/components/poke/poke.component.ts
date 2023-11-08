@@ -24,6 +24,7 @@ export class PokeComponent {
   genDatas: any;
   pokemonsDatas: any;
   selectedTypeObject: any;
+  allPokemonsDatas: any;
 
   constructor(private dataService: DataService) {
     this.datasTypes = [];
@@ -33,14 +34,15 @@ export class PokeComponent {
 
   async ngOnInit() {
     this.getTypes();
-    this.getGenArray('generation');
+    this.getGenArray();
   }
 
-  getGenArray(endpoints: string) {
-    this.dataService.getPokemonData(endpoints).subscribe({
+  getGenArray() {
+    this.dataService.getDatas('pokemon/generation').subscribe({
       next: (data) => {
         this.datasGen = data;
         console.log(this.datasGen);
+
         this.genArray = Array.from(
           { length: this.datasGen.count },
           (_, i) => i + 1
@@ -65,43 +67,62 @@ export class PokeComponent {
     });
   }
 
-  getPoke(endpoint: string) {
-    this.dataService.getPokemonData(endpoint).subscribe({
-      next: (data) => {
-        const pokemonSpecies = data.pokemon_species;
+  getPoke(generationName: string) {
+    // Appel à ton API backend pour obtenir les espèces de Pokémon d'une génération spécifique
+    this.dataService
+      .getDatas(`pokemon/generation/${generationName}`)
+      .subscribe({
+        next: (data) => {
+          // Supposons que 'data.pokemon_species' est un tableau d'espèces de Pokémon
+          const pokemonSpecies = data.pokemon_species;
 
-        const pokemonDetailsObservables = pokemonSpecies.map((species: any) => {
-          const pokemonId = species.url.split('/').filter(Boolean).pop();
-          return this.dataService.getPokemonData(`pokemon/${pokemonId}`);
-        });
+          // Création d'un tableau d'observables pour obtenir les détails de chaque Pokémon
+          const pokemonsDetailsObservables = pokemonSpecies.map(
+            (species: any) => {
+              const pokemonId = species.url.split('/').filter(Boolean).pop();
+              // Appel à ton API backend pour obtenir les détails d'un Pokémon spécifique
+              return this.dataService.getDatas(`pokemon/${pokemonId}`);
+            }
+          );
 
-        forkJoin(pokemonDetailsObservables).subscribe(
-          (pokemonDetailsArray: any) => {
-            const pokemonSpritesAndNames = pokemonDetailsArray.map(
-              (details: any) => {
-                return {
-                  name: details.name,
-                  sprite: details.sprites,
-                  height: details.height,
-                  id: details.id,
-                  stats: details.stats,
-                  types: details.types,
-                };
-              }
-            );
-            pokemonSpritesAndNames.sort((a: any, b: any) => a.id - b.id);
-            this.pokemonsDatas = pokemonSpritesAndNames;
-            console.log(pokemonSpritesAndNames);
-          }
-        );
-      },
-      error: (error) => {
-        console.error(
-          'Erreur lors de la récupération des détails des Pokémon',
-          error
-        );
-      },
-    });
+          // Utilisation de forkJoin pour attendre que tous les observables soient complétés
+          forkJoin(pokemonsDetailsObservables).subscribe({
+            next: (pokemonsDetailsArray: any) => {
+              // Traitement des données reçues pour chaque Pokémon
+              const pokemonsDetails = pokemonsDetailsArray.map(
+                (details: any) => {
+                  return {
+                    name: details.name,
+                    sprite: details.sprites,
+                    height: details.height,
+                    id: details.id,
+                    stats: details.stats,
+                    types: details.types.map((type: any) => type.type.name), // Transforme les types en un tableau de noms de types
+                  };
+                }
+              );
+
+              // Tri des Pokémon par leur ID
+              pokemonsDetails.sort((a: any, b: any) => a.id - b.id);
+              this.allPokemonsDatas = pokemonsDetails;
+              this.pokemonsDatas = pokemonsDetails;
+              console.log(pokemonsDetails);
+            },
+            error: (error) => {
+              console.error(
+                'Erreur lors de la récupération des détails des Pokémon',
+                error
+              );
+            },
+          });
+        },
+        error: (error) => {
+          console.error(
+            'Erreur lors de la récupération des espèces de Pokémon',
+            error
+          );
+        },
+      });
   }
 
   selectGen(index: number) {
@@ -111,9 +132,7 @@ export class PokeComponent {
       this.pokemonsDatas = null;
     } else {
       this.selectedGen = index;
-      this.getPoke(
-        `generation/${this.datasGen.results[this.selectedGen].name}`
-      );
+      this.getPoke(`${this.datasGen.results[this.selectedGen].name}`);
     }
   }
 
@@ -121,30 +140,28 @@ export class PokeComponent {
     if (this.selectedType === typeName) {
       this.selectedType = null;
       this.selectedTypeObject = null;
+      this.pokemonsDatas = [...this.allPokemonsDatas];
     } else {
       this.selectedType = typeName;
       this.selectedTypeObject = this.datasTypes.find(
         (type: any) => type.name.fr === this.selectedType
       );
 
+      console.log(this.selectedTypeObject.name.en);
+      console.log(this.pokemonsDatas);
+
       if (!this.selectedTypeObject) {
         console.error('Type sélectionné non trouvé dans datasTypes');
         return;
       }
 
-      const selectedTypeName = this.selectedTypeObject.name.en;
-      const filteredPokemons = this.pokemonsDatas.filter((pokemon: any) => {
+      const selectedTypeName = this.selectedTypeObject.name.en.toLowerCase();
+      const filteredPokemons = this.allPokemonsDatas.filter((pokemon: any) => {
         return pokemon.types.some(
-          (typeContainer: any) => typeContainer.type.name === selectedTypeName
+          (type: any) => type.toLowerCase() === selectedTypeName
         );
       });
-
-      console.log('Nom du type sélectionné:', selectedTypeName);
-      console.log(
-        'Premier Pokémon pour vérifier les types:',
-        this.pokemonsDatas[0].types
-      );
-      console.log('Pokémons filtrés:', filteredPokemons);
+      this.pokemonsDatas = filteredPokemons;
     }
   }
 }

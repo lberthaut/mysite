@@ -13,12 +13,4 @@ export class DataService {
   getDatas(endpoints: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/${endpoints}`);
   }
-
-  // getPokemonData(endpoints: string): Observable<any> {
-  //   return this.http.get(`https://pokeapi.co/api/v2/${endpoints}`);
-  // }
-
-  getPokemonTypesSprites(): Observable<any> {
-    return this.http.get(`https://api-pokemon-fr.vercel.app/api/v1/types`);
-  }
 }

@@ -1,42 +1,99 @@
 <mat-progress-bar
   mode="indeterminate"
-  *ngIf="!dataLoaded"
+  *ngIf="!isDataLoaded"
   [color]="'accent'"
 ></mat-progress-bar>
 <div class="poke_container">
   <div class="generations">
     <mat-card
-      *ngFor="let gen of genArray; let i = index"
+      *ngFor="let generation of numberOfGenerations; let i = index"
       class="generation"
-      (click)="selectGen(i)"
-      [ngClass]="{ 'generation-clicked': selectedGen === i }"
+      (click)="selectGeneration(i)"
+      [ngClass]="{ 'generation-clicked': selectedGenerationIndex === i }"
     >
       <img src="assets/icons/pokeball.svg" class="pokeball_icon" />
-      <div matListItemTitle>Pokémons de {{ gen }}e génération</div>
+      <div matListItemTitle>Pokémons de la {{ generation }}e génération</div>
     </mat-card>
   </div>
-  <div class="contents_container">
-    <div class="types" *ngIf="selectedGen != null && pokemonsDatas">
+  <div class="none_poke_container" *ngIf="isNonePokemons">
+    <p class="none_poke_text">Aucun Pokémons de ce type sur cette génération</p>
+  </div>
+  <div class="contents_container" *ngIf="!isLoadingPokemons">
+    <div
+      class="types"
+      *ngIf="selectedGenerationIndex != null && pokemons.length"
+    >
       <img
-        class="type"
-        [ngClass]="{ grayscale: type.name.fr === selectedType }"
-        src="{{ type.sprites }}"
-        *ngFor="let type of datasTypes"
-        (click)="selectType(type.name.fr)"
-        alt="{{ type.name.fr }} pic"
-        matTooltip="{{ type.name.fr }}"
+        class="type {{ type }} cursor_type"
+        [ngClass]="{ grayscale: type === selectedType }"
+        src="assets/icons/types/{{ type }}.svg"
+        *ngFor="let type of types"
+        alt="{{ type }} pic"
+        matTooltip="{{ type }}"
+        (click)="selectType(type)"
       />
     </div>
-    <div class="cards" *ngIf="pokemonsDatas">
-      <mat-card *ngFor="let pokemon of pokemonsDatas" class="pokemon_card">
+    <div class="cards" *ngIf="pokemons.length">
+      <mat-card
+        *ngFor="let pokemon of pokemons"
+        class="pokemon_card"
+        (click)="openPokemonModal(pokemon)"
+      >
         <p class="pokemon_id">{{ pokemon.id }}</p>
         <img
-          [src]="pokemon.sprite.front_default"
+          [src]="pokemon.sprites.front_default"
           alt="{{ pokemon.name }}"
           class="pokemon_pic"
         />
-        <p>{{ pokemon.name }}</p>
+        <p class="pokemon_name">{{ pokemon.name }}</p>
       </mat-card>
     </div>
   </div>
+  <div class="loading" *ngIf="isLoadingPokemons">
+    <img src="assets/icons/pokeball.svg" class="pokeball_loading" />
+  </div>
 </div>
+
+<ng-template #pokemonTemplate let-pokemon>
+  <div class="pokemon_modal">
+    <p class="poke_name">{{ pokemon.name }}</p>
+    <div class="pokemodal_container">
+      <div class="poke_pics">
+        <img
+          [src]="pokemon.sprites.front_default"
+          alt="{{ pokemon.name }}"
+          class="pokemodal_pic"
+          matTooltip="normal"
+          matTooltipPosition="right"
+        />
+        <img
+          [src]="pokemon.sprites.front_shiny"
+          alt="{{ pokemon.name }}"
+          class="pokemodal_pic"
+          matTooltip="shiny"
+          matTooltipPosition="right"
+        />
+      </div>
+      <div class="poke_contents">
+        <div class="poke_stats_container">
+          <mat-card
+            class="pokemodal_card_stats"
+            *ngFor="let stat of pokemon.stats"
+          >
+            <p class="stat">{{ stat.base_stat }}</p>
+            <p class="stat_name">{{ stat.stat.name }}</p>
+          </mat-card>
+        </div>
+        <div class="poke_types">
+          <img
+            class="type {{ type }} typemodal"
+            src="assets/icons/types/{{ type }}.svg"
+            *ngFor="let type of pokemon.types"
+            alt="type {{ type }} pic"
+            matTooltip="{{ type }}"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -1,167 +1,181 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { DataService } from '../../services/datas.service';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition,
-} from '@angular/animations';
 import { forkJoin } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../../components/modal/modal.component';
+
+interface PokemonSpecies {
+  name: string;
+  url: string;
+}
+
+interface PokemonDetails {
+  name: string;
+  sprites: any;
+  height: number;
+  id: number;
+  stats: any[];
+  types: { type: { name: string } }[];
+}
+
+interface GenerationData {
+  count: number;
+  results: { name: string }[];
+}
 
 @Component({
   selector: 'app-poke',
   templateUrl: './poke.component.html',
   styleUrls: ['./poke.component.scss'],
 })
-export class PokeComponent {
-  datasTypes: any;
-  datasGen: any;
-  genArray: any;
-  dataLoaded: boolean = false;
-  selectedGen: number | null = null;
+export class PokeComponent implements OnInit {
+  generations: any[] = [];
+  numberOfGenerations: number[] = [];
+  isDataLoaded: boolean = false;
+  selectedGenerationIndex: number | null = null;
   selectedType: string | null = null;
-  genDatas: any;
-  pokemonsDatas: any;
-  selectedTypeObject: any;
-  allPokemonsDatas: any;
+  pokemons: any[] = [];
+  allPokemons: any[] = [];
+  isLoadingPokemons: boolean = false;
+  isNonePokemons: boolean = false;
+  types: string[] = [
+    'bug',
+    'dark',
+    'dragon',
+    'electric',
+    'fairy',
+    'fighting',
+    'fire',
+    'flying',
+    'ghost',
+    'grass',
+    'ground',
+    'ice',
+    'normal',
+    'poison',
+    'psychic',
+    'rock',
+    'steel',
+    'water',
+  ];
 
-  constructor(private dataService: DataService) {
-    this.datasTypes = [];
-    this.datasGen = 0;
-    this.genArray = [];
+  @ViewChild('pokemonTemplate') pokemonTemplateRef!: TemplateRef<any>;
+
+  constructor(private dataService: DataService, private dialog: MatDialog) {}
+
+  ngOnInit() {
+    this.loadGenerations();
   }
 
-  async ngOnInit() {
-    this.getTypes();
-    this.getGenArray();
-  }
-
-  getGenArray() {
+  loadGenerations() {
     this.dataService.getDatas('pokemon/generation').subscribe({
       next: (data) => {
-        this.datasGen = data;
-        console.log(this.datasGen);
-
-        this.genArray = Array.from(
-          { length: this.datasGen.count },
+        this.generations = data.results;
+        this.isDataLoaded = true;
+        this.numberOfGenerations = Array.from(
+          { length: this.generations.length },
           (_, i) => i + 1
         );
-        this.dataLoaded = true;
       },
-      error: (error) => {
-        console.error('Erreur lors de la récupération des générations', error);
-      },
+      error: (error) => console.error('Error fetching generations', error),
     });
   }
 
-  getTypes() {
-    this.dataService.getPokemonTypesSprites().subscribe({
-      next: (data) => {
-        this.datasTypes = data;
-        console.log(this.datasTypes);
-      },
-      error: (error) => {
-        console.error('Erreur lors de la récupération des types', error);
-      },
-    });
-  }
-
-  getPoke(generationName: string) {
-    // Appel à ton API backend pour obtenir les espèces de Pokémon d'une génération spécifique
+  loadPokemonsByGeneration(generationName: string) {
+    this.isLoadingPokemons = true;
     this.dataService
       .getDatas(`pokemon/generation/${generationName}`)
       .subscribe({
-        next: (data) => {
-          // Supposons que 'data.pokemon_species' est un tableau d'espèces de Pokémon
+        next: (data: { pokemon_species: PokemonSpecies[] }) => {
           const pokemonSpecies = data.pokemon_species;
+          const pokemonDetailsObservables = pokemonSpecies.map((species) => {
+            const pokemonId = species.url.split('/').filter(Boolean).pop();
+            return this.dataService.getDatas(`pokemon/${pokemonId}`);
+          });
 
-          // Création d'un tableau d'observables pour obtenir les détails de chaque Pokémon
-          const pokemonsDetailsObservables = pokemonSpecies.map(
-            (species: any) => {
-              const pokemonId = species.url.split('/').filter(Boolean).pop();
-              // Appel à ton API backend pour obtenir les détails d'un Pokémon spécifique
-              return this.dataService.getDatas(`pokemon/${pokemonId}`);
-            }
-          );
-
-          // Utilisation de forkJoin pour attendre que tous les observables soient complétés
-          forkJoin(pokemonsDetailsObservables).subscribe({
-            next: (pokemonsDetailsArray: any) => {
-              // Traitement des données reçues pour chaque Pokémon
-              const pokemonsDetails = pokemonsDetailsArray.map(
-                (details: any) => {
-                  return {
-                    name: details.name,
-                    sprite: details.sprites,
-                    height: details.height,
-                    id: details.id,
-                    stats: details.stats,
-                    types: details.types.map((type: any) => type.type.name), // Transforme les types en un tableau de noms de types
-                  };
-                }
-              );
-
-              // Tri des Pokémon par leur ID
-              pokemonsDetails.sort((a: any, b: any) => a.id - b.id);
-              this.allPokemonsDatas = pokemonsDetails;
-              this.pokemonsDatas = pokemonsDetails;
-              console.log(pokemonsDetails);
+          forkJoin(pokemonDetailsObservables).subscribe({
+            next: (detailsArray: PokemonDetails[]) => {
+              this.allPokemons = detailsArray
+                .map(this.mapPokemonDetails)
+                .sort((a, b) => a.id - b.id);
+              this.isLoadingPokemons = false;
+              this.pokemons = [...this.allPokemons];
+              console.log(this.pokemons);
             },
             error: (error) => {
-              console.error(
-                'Erreur lors de la récupération des détails des Pokémon',
-                error
-              );
+              console.error('Error fetching pokemon details', error);
             },
           });
         },
         error: (error) => {
-          console.error(
-            'Erreur lors de la récupération des espèces de Pokémon',
-            error
-          );
+          console.error('Error fetching generation data', error);
+          this.isLoadingPokemons = false;
         },
       });
   }
 
-  selectGen(index: number) {
+  mapPokemonDetails(details: any) {
+    return {
+      name: details.name,
+      sprites: details.sprites,
+      height: details.height,
+      id: details.id,
+      stats: details.stats,
+      types: details.types.map((t: any) => t.type.name.toLowerCase()),
+    };
+  }
+
+  selectGeneration(index: number) {
     this.selectedType = null;
-    if (this.selectedGen === index) {
-      this.selectedGen = null;
-      this.pokemonsDatas = null;
+    this.isNonePokemons = false;
+    if (this.selectedGenerationIndex === index) {
+      this.selectedGenerationIndex = null;
+      this.pokemons = [];
     } else {
-      this.selectedGen = index;
-      this.getPoke(`${this.datasGen.results[this.selectedGen].name}`);
+      this.selectedGenerationIndex = index;
+      const generationName = this.generations[index].name;
+      this.loadPokemonsByGeneration(generationName);
+      if (window.scrollY == 0) {
+        window.scrollTo({
+          left: 0,
+          top: 50 * window.outerHeight,
+          behavior: 'smooth',
+        });
+      }
     }
   }
 
   selectType(typeName: string) {
     if (this.selectedType === typeName) {
-      this.selectedType = null;
-      this.selectedTypeObject = null;
-      this.pokemonsDatas = [...this.allPokemonsDatas];
+      this.resetSelection();
     } else {
       this.selectedType = typeName;
-      this.selectedTypeObject = this.datasTypes.find(
-        (type: any) => type.name.fr === this.selectedType
-      );
-
-      console.log(this.selectedTypeObject.name.en);
-      console.log(this.pokemonsDatas);
-
-      if (!this.selectedTypeObject) {
-        console.error('Type sélectionné non trouvé dans datasTypes');
+      const typeObject = this.types.find((t) => t === typeName);
+      if (!typeObject) {
+        console.error('Selected type not found in types');
         return;
       }
-
-      const selectedTypeName = this.selectedTypeObject.name.en.toLowerCase();
-      const filteredPokemons = this.allPokemonsDatas.filter((pokemon: any) => {
-        return pokemon.types.some(
-          (type: any) => type.toLowerCase() === selectedTypeName
-        );
-      });
-      this.pokemonsDatas = filteredPokemons;
+      this.pokemons = this.allPokemons.filter((pokemon) =>
+        pokemon.types.includes(typeObject)
+      );
+      if (this.pokemons.length == 0) {
+        this.isNonePokemons = true;
+        this.selectedGenerationIndex = null;
+      }
     }
+  }
+
+  resetSelection() {
+    this.selectedType = null;
+    this.pokemons = [...this.allPokemons];
+  }
+
+  openPokemonModal(pokemon: any) {
+    const dialogRef = this.dialog.open(ModalComponent, {
+      data: {
+        templateRef: this.pokemonTemplateRef,
+        content: pokemon,
+      },
+    });
   }
 }

@@ -28,6 +28,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { PokeComponent } from './components/poke/poke.component';
 import { PokepageComponent } from './pages/pokepage/pokepage.component';
 import { MatListModule } from '@angular/material/list';
+import { ModalComponent } from './components/modal/modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { MatListModule } from '@angular/material/list';
     PrefooterComponent,
     PokeComponent,
     PokepageComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +67,7 @@ import { MatListModule } from '@angular/material/list';
     MatProgressBarModule,
     MatTabsModule,
     MatListModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,3 +1,44 @@
 .aboutme_container{
     margin-left: 10vw;
+    margin-top: 15vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
 }
+
+.word-cloud-3d {
+    perspective: 500px;
+    transform-style: preserve-3d;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 255, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(0, 63, 127, 0.763) 0px -2px 6px 0px inset;
+    margin-top: 170px;
+  }
+
+  .left_cloud{
+    margin-left: 15%;
+  }
+  
+.right_cloud{
+    margin-right: 20%;
+}
+
+  .word {
+    position: absolute;
+    transform: translate3d(0, 0, 0);
+    user-select: none;
+  }
+
+  .oldjob_container, .techlife_container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    height: 600px;
+  }
+
+  .text{
+    width: 700px;
+    margin-right: 5%;
+    user-select: none;
+  } 

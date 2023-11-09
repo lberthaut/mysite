@@ -1,3 +1,87 @@
 <div class="aboutme_container">
-  <p>A venir</p>
+  <div class="oldjob_container">
+    <div
+      class="word-cloud-3d left_cloud"
+      #leftWordCloud
+      (mousedown)="onWordCloudMouseDown($event, 'left')"
+    >
+      <div class="background-bubble"></div>
+      <div
+        class="word"
+        *ngFor="let word of softWords"
+        [ngStyle]="{
+          transform:
+            'translate3d(' +
+            wordPositions[word].x +
+            'px, ' +
+            wordPositions[word].y +
+            'px, ' +
+            wordPositions[word].z +
+            'px)',
+          'font-size': wordPositions[word].fontSize + 'px'
+        }"
+      >
+        {{ word }}
+      </div>
+    </div>
+    <p class="text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus semper
+      nisi vitae nisl ullamcorper porttitor. Vivamus at elit eu mauris mattis
+      sodales. Donec efficitur tortor at rhoncus fringilla. In hac habitasse
+      platea dictumst. Suspendisse potenti. Praesent fringilla lectus nulla,
+      sodales tincidunt arcu suscipit id. In a turpis vulputate, imperdiet nisi
+      eu, tincidunt urna. Quisque venenatis aliquam enim nec tincidunt. Vivamus
+      nec aliquam diam, in blandit tortor. Nulla tincidunt mauris eu faucibus
+      congue. Phasellus vitae odio ut quam venenatis volutpat. Integer eu velit
+      sodales, ornare velit nec, placerat sapien. Morbi eget nisi vitae ex
+      elementum ultrices. Morbi eu finibus elit, a porta lectus. Vestibulum ex
+      ante, malesuada commodo mi non, dictum semper purus. Morbi ipsum nisi,
+      dictum mollis est quis, laoreet fermentum mauris. Nullam neque nunc,
+      interdum id suscipit maximus, ornare et lectus. Phasellus nec semper
+      tortor. In venenatis ipsum lacus, eget convallis tortor semper sit amet.
+      Pellentesque tempus, ante vitae porta vulputate, diam augue dapibus
+      mauris, et sagittis risus nibh in risus. Praesent scelerisque suscipit
+    </p>
+  </div>
+  <div class="techlife_container">
+    <p class="text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus semper
+      nisi vitae nisl ullamcorper porttitor. Vivamus at elit eu mauris mattis
+      sodales. Donec efficitur tortor at rhoncus fringilla. In hac habitasse
+      platea dictumst. Suspendisse potenti. Praesent fringilla lectus nulla,
+      sodales tincidunt arcu suscipit id. In a turpis vulputate, imperdiet nisi
+      eu, tincidunt urna. Quisque venenatis aliquam enim nec tincidunt. Vivamus
+      nec aliquam diam, in blandit tortor. Nulla tincidunt mauris eu faucibus
+      congue. Phasellus vitae odio ut quam venenatis volutpat. Integer eu velit
+      sodales, ornare velit nec, placerat sapien. Morbi eget nisi vitae ex
+      elementum ultrices. Morbi eu finibus elit, a porta lectus. Vestibulum ex
+      ante, malesuada commodo mi non, dictum semper purus. Morbi ipsum nisi,
+      dictum mollis est quis, laoreet fermentum mauris. Nullam neque nunc,
+      interdum id suscipit maximus, ornare et lectus. Phasellus nec semper
+    </p>
+    <div
+      class="word-cloud-3d right_cloud"
+      #rightWordCloud
+      (mousedown)="onWordCloudMouseDown($event, 'right')"
+    >
+      <div class="background-bubble"></div>
+      <div
+        class="word"
+        *ngFor="let word of techWords"
+        [ngStyle]="{
+          transform:
+            'translate3d(' +
+            wordPositions[word].x +
+            'px, ' +
+            wordPositions[word].y +
+            'px, ' +
+            wordPositions[word].z +
+            'px)',
+          'font-size': wordPositions[word].fontSize + 'px'
+        }"
+      >
+        {{ word }}
+      </div>
+    </div>
+  </div>
 </div>

@@ -19,7 +19,7 @@
     <p class="none_poke_text">Aucun Pokémons de ce type sur cette génération</p>
   </div>
   <div class="loading_container" *ngIf="selectedGenerationIndex == null"></div>
-  <div class="contents_container" *ngIf="!isLoadingPokemons">
+  <div class="contents_container" *ngIf="!isLoadingPokemons && types">
     <div
       class="types"
       *ngIf="selectedGenerationIndex != null && pokemons.length"
@@ -37,7 +37,7 @@
     <div class="cards" *ngIf="pokemons.length">
       <mat-card
         *ngFor="let pokemon of pokemons"
-        class="pokemon_card"
+        class="pokemon_card {{ pokemon.types[0] }}"
         (click)="openPokemonModal(pokemon)"
       >
         <p class="pokemon_id">{{ pokemon.id }}</p>
@@ -57,7 +57,9 @@
 
 <ng-template #pokemonTemplate let-pokemon>
   <div class="pokemon_modal">
-    <p class="poke_name">{{ pokemon.name }}</p>
+    <p class="poke_name">
+      {{ pokemon.name }}
+    </p>
     <div class="pokemodal_container">
       <div class="poke_pics">
         <img

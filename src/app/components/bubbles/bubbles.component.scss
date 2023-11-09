@@ -7,7 +7,7 @@
     overflow: relative; 
     height: 25vh; 
     margin-left: 10vw;
-    flex:1
+    max-width: 70%;
   }
   
   .floating-bubble {
@@ -20,14 +20,14 @@
   @keyframes float {
     0% {
       transform: translateY(0);
-      animation-timing-function: ease-in; // Commence lentement
+      animation-timing-function: ease-in;
     }
     50% {
       transform: translateY(-23vh);
-      animation-timing-function: ease-out; // Termine lentement
+      animation-timing-function: ease-out;
     }
     100% {
       transform: translateY(0);
-      animation-timing-function: ease-in; // Pour que le cycle recommence avec un ease-in
+      animation-timing-function: ease-in;
     }
   }

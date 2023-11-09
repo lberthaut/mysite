@@ -16,7 +16,7 @@ export class BubblesComponent implements OnInit {
     const bubblesCount = this.randomNumber(15, 20);
     for (let i = 0; i < bubblesCount; i++) {
       this.bubbles.push({
-        size: this.randomNumber(30, 100),
+        size: this.randomNumber(10, 130),
         animationDuration: this.randomNumber(4, 8),
         left: this.randomNumber(0, 100),
         top: this.randomNumber(0, 75),

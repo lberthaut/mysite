@@ -2,7 +2,6 @@
 
 .header_container{
     height: 25vh;
-    background-color: $header-background;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -28,7 +27,7 @@
     margin: 4vh 0.5vw 0 0.5vw;
     cursor: pointer;
     &>mat-icon{
-      font-size: 3vw;
+      font-size: 2vw;
       height: 3vw;
       width: 3vw;
     }

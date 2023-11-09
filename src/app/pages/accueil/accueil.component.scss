@@ -1,8 +1,8 @@
 @import '../../../variables.scss';
 
+
 .index_text_title_container{
     margin: 10vh 0 0 20vh;
-    
 }
 
 .index_text_title_01{
@@ -116,6 +116,7 @@
 .cv_button{
     cursor: pointer;
     margin-bottom: 6vh;
+    border: 20px solid $sidebar-secondary-color;
 }
 
 .cv_link{

@@ -1,0 +1,33 @@
+.bubbles {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    flex-wrap: nowrap;
+    overflow: relative; 
+    height: 25vh; 
+    margin-left: 10vw;
+    flex:1
+  }
+  
+  .floating-bubble {
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 255, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(0, 63, 127, 0.763) 0px -2px 6px 0px inset;
+    animation: float linear infinite;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+      animation-timing-function: ease-in; // Commence lentement
+    }
+    50% {
+      transform: translateY(-23vh);
+      animation-timing-function: ease-out; // Termine lentement
+    }
+    100% {
+      transform: translateY(0);
+      animation-timing-function: ease-in; // Pour que le cycle recommence avec un ease-in
+    }
+  }

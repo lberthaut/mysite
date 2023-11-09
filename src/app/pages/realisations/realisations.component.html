@@ -5,6 +5,65 @@
 ></mat-progress-bar>
 <div class="loading_container" *ngIf="!dataLoaded"></div>
 <div class="realisations_container" @slideFromRight *ngIf="dataLoaded">
+  <div class="realisations_perso">
+    <div class="title_container">
+      <h2 class="realisations_title glitch">Réalisations Personnelles</h2>
+      <h2 class="realisations_title glitch">Réalisations Personnelles</h2>
+      <h2 class="realisations_title glitch">Réalisations Personnelles</h2>
+    </div>
+
+    <div class="cards_container">
+      <ng-container *ngFor="let project of projectsDatasOc">
+        <mat-card class="card_container" *ngIf="project.id == 11">
+          <mat-card-header>
+            <mat-card-title class="project_title">{{
+              project.name
+            }}</mat-card-title>
+            <mat-card-subtitle class="project_subtitle">{{
+              project.title
+            }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="project_technos">
+            <p>
+              {{ project.technos }}
+            </p>
+          </mat-card-content>
+          <mat-card-content class="project_description">
+            <p>
+              {{ project.description }}
+            </p>
+          </mat-card-content>
+          <mat-card-actions
+            class="links_container"
+            *ngIf="project.link || project.repo_link"
+          >
+            <a
+              class="links"
+              mat-raised-button
+              href="{{ project.link }}"
+              *ngIf="project.link"
+              >Site</a
+            >
+            <a
+              class="links"
+              mat-raised-button
+              href="{{ project.repo_link }}"
+              *ngIf="project.repo_link"
+              >Repo</a
+            >
+            <a
+              class="links"
+              mat-raised-button
+              href="{{ project.repo_link_back }}"
+              *ngIf="project.repo_link_back"
+              >Repo Back</a
+            >
+          </mat-card-actions>
+        </mat-card>
+      </ng-container>
+    </div>
+  </div>
+
   <div class="realisations_map">
     <div class="title_container">
       <h2 class="realisations_title glitch">Réalisations Entreprise</h2>
@@ -32,14 +91,30 @@
             {{ project.description }}
           </p>
         </mat-card-content>
-        <mat-card-actions class="links_container">
-          <a class="links" mat-raised-button href="{{ project.link }}">Site</a>
+        <mat-card-actions
+          class="links_container"
+          *ngIf="project.link || project.repo_link"
+        >
+          <a
+            class="links"
+            mat-raised-button
+            href="{{ project.link }}"
+            *ngIf="project.link"
+            >Site</a
+          >
           <a
             class="links"
             mat-raised-button
             href="{{ project.repo_link }}"
             *ngIf="project.repo_link"
             >Repo</a
+          >
+          <a
+            class="links"
+            mat-raised-button
+            href="{{ project.repo_link_back }}"
+            *ngIf="project.repo_link_back"
+            >Repo Back</a
           >
         </mat-card-actions>
       </mat-card>
@@ -54,37 +129,43 @@
         <h2 class="realisations_title glitch">Réalisations OpenClassorooms</h2>
       </div>
       <div class="cards_container">
-        <mat-card
-          class="card_container"
-          *ngFor="let project of projectsDatasOc"
-        >
-          <mat-card-header>
-            <mat-card-title class="project_title">{{
-              project.name
-            }}</mat-card-title>
-            <mat-card-subtitle class="project_subtitle">{{
-              project.title
-            }}</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content class="project_technos">
-            <p>
-              {{ project.technos }}
-            </p>
-          </mat-card-content>
-          <mat-card-content class="project_description">
-            <p>
-              {{ project.description }}
-            </p>
-          </mat-card-content>
-          <mat-card-actions class="links_container">
-            <a class="links" mat-raised-button href="{{ project.link }}"
-              >Site</a
-            >
-            <a class="links" mat-raised-button href="{{ project.repo_link }}"
-              >Repo</a
-            >
-          </mat-card-actions>
-        </mat-card>
+        <ng-container *ngFor="let project of projectsDatasOc">
+          <mat-card class="card_container" *ngIf="project.id != 11">
+            <mat-card-header>
+              <mat-card-title class="project_title">{{
+                project.name
+              }}</mat-card-title>
+              <mat-card-subtitle class="project_subtitle">{{
+                project.title
+              }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content class="project_technos">
+              <p>
+                {{ project.technos }}
+              </p>
+            </mat-card-content>
+            <mat-card-content class="project_description">
+              <p>
+                {{ project.description }}
+              </p>
+            </mat-card-content>
+            <mat-card-actions class="links_container">
+              <a class="links" mat-raised-button href="{{ project.link }}"
+                >Site</a
+              >
+              <a class="links" mat-raised-button href="{{ project.repo_link }}"
+                >Repo</a
+              >
+              <a
+                class="links"
+                mat-raised-button
+                href="{{ project.repo_link_back }}"
+                *ngIf="project.repo_link_back"
+                >Repo Back</a
+              >
+            </mat-card-actions>
+          </mat-card>
+        </ng-container>
       </div>
     </div>
   </div>

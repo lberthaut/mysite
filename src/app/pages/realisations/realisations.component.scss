@@ -24,7 +24,7 @@
 
 .card_container{
   border-radius: 0;
-  border-left: 4px solid $header-background;
+  border-left: 4px solid $sidebar-secondary-color;
   padding-left: 2vw;
   padding-bottom: 2vh;
 }
@@ -49,10 +49,10 @@
        -moz-border-radius: 7.5px;
        -webkit-border-radius: 7.5px;
        border-radius: 7.5px;
-       background-color: $header-background;
+       background-color: $sidebar-secondary-color;
        position: absolute;
-       top: 3.2vh;
-       left: -1.18vh;
+       top: 25px;
+       left: -10px;
 }
 
 .project_subtitle{

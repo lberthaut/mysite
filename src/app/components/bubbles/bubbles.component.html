@@ -1,0 +1,13 @@
+<div class="bubbles">
+  <div
+    *ngFor="let bubble of bubbles"
+    class="floating-bubble"
+    [ngStyle]="{
+      'width.px': bubble.size,
+      'height.px': bubble.size,
+      'animation-duration.s': bubble.animationDuration,
+      'left.%': bubble.left,
+      'top.vh': bubble.top
+    }"
+  ></div>
+</div>

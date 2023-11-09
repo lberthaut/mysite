@@ -30,6 +30,7 @@ import { PokepageComponent } from './pages/pokepage/pokepage.component';
 import { MatListModule } from '@angular/material/list';
 import { ModalComponent } from './components/modal/modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { BubblesComponent } from './components/bubbles/bubbles.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     PokeComponent,
     PokepageComponent,
     ModalComponent,
+    BubblesComponent,
   ],
   imports: [
     BrowserModule,

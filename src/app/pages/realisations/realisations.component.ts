@@ -9,7 +9,7 @@ import {
 } from '@angular/animations';
 
 interface IProject {
-  id: string;
+  id: number;
   name: string;
   image: string;
   title: string;
@@ -17,6 +17,7 @@ interface IProject {
   description: string;
   link: string;
   repo_link: string;
+  repo_link_back: string;
 }
 
 @Component({
